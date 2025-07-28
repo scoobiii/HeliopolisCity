@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do Município de Heliópolis - Prefeitura de São Paulo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1D1D1B;
+            background-color: #f5f5f5;
+        }
+
+        /* Header da Prefeitura SP */
+        .header-top {
+            background: linear-gradient(135deg, #1D1D1B 0%, #333 100%);
+            color: white;
+            padding: 8px 0;
+            font-size: 12px;
+        }
+
+        .header-top .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-main {
+            background-color: #ffffff;
+            border-bottom: 4px solid #FF9600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header-main .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-prefeitura {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .brasao-sp {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #FF9600 0%, #E3130C 50%, #006940 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .logo-text h1 {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1D1D1B;
+            margin-bottom: 5px;
+            font-family: 'Franklin Gothic Demi', sans-serif;
+        }
+
+        .logo-text p {
+            font-size: 16px;
+            color: #FF9600;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: linear-gradient(135deg, #DADADA 0%, #f0f0f0 100%);
+            padding: 12px 0;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .breadcrumb ul {
+            list-style: none;
+            display: flex;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .breadcrumb li::after {
+            content: " > ";
+            margin-left: 10px;
+            color: #666;
+        }
+
+        .breadcrumb li:last-child::after {
+            content: "";
+        }
+
+        .breadcrumb a {
+            color: #006940;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .breadcrumb a:hover {
+            color: #E3130C;
+        }
+
+        /* Navegação Principal */
+        .nav-main {
+            background: linear-gradient(135deg, #FF9600 0%, #FF8000 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(255, 150, 0, 0.3);
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .nav-item {
+            background: transparent;
+            color: white;
+            padding: 18px 28px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-right: 1px solid rgba(255,255,255,0.2);
+            font-size: 14px;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(0, 105, 64, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .nav-item.active {
+            background-color: #006940;
+            position: relative;
+            box-shadow: inset 0 3px 0 #E3130C;
+        }
+
+        /* Conteúdo Principal */
+        .main-content {
+            background-color: white;
+            margin: 20px 0;
+        }
+
+        .content-section {
+            display: none;
+            padding: 40px;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-top: 3px solid #FF9600;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #1D1D1B;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #FF9600;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #E3130C 0%, #006940 100%);
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            border-left: 5px solid #FF9600;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            transform: translateY(-3px);
+            border-left-color: #E3130C;
+        }
+
+        .card h3 {
+            color: #1D1D1B;
+            margin-bottom: 18px;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        /* Botões */
+        .btn {
+            background: linear-gradient(135deg, #FF9600 0%, #FF8000 100%);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            margin: 8px 8px 8px 0;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(255, 150, 0, 0.3);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #006940 0%, #004d30 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 105, 64, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #DADADA 0%, #bbb 100%);
+            color: #1D1D1B;
+            box-shadow: 0 4px 12px rgba(218, 218, 218, 0.4);
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #1D1D1B 0%, #333 100%);
+            color: white;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #E3130C 0%, #c10a05 100%);
+            box-shadow: 0 4px 12px rgba(227, 19, 12, 0.3);
+        }
+
+        .btn-danger:hover {
+            background: linear-gradient(135deg, #b50f09 0%, #900a06 100%);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #006940 0%, #004d30 100%);
+            box-shadow: 0 4px 12px rgba(0, 105, 64, 0.3);
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        /* Document Items */
+        .document-item {
+            background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #DADADA;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .document-item:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            border-color: #FF9600;
+            transform: translateY(-3px);
+        }
+
+        .document-item h3 {
+            color: #1D1D1B;
+            margin-bottom: 18px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-left: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-urgente {
+            background: linear-gradient(135deg, #E3130C 0%, #c10a05 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(227, 19, 12, 0.3);
+        }
+
+        .status-tramitacao {
+            background: linear-gradient(135deg, #FF9600 0%, #FF8000 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(255, 150, 0, 0.3);
+        }
+
+        .status-aprovado {
+            background: linear-gradient(135deg, #006940 0%, #004d30 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(0, 105, 64, 0.3);
+        }
+
+        /* Destaque da Prefeitura SP */
+        .destaque-sp {
+            background: linear-gradient(135deg, #FF9600 0%, #E3130C 50%, #006940 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .countdown {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin: 25px 0;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Formulários */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #1D1D1B;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #DADADA;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #FF9600;
+            box-shadow: 0 0 0 3px rgba(255, 150, 0, 0.1);
+        }
+
+        /* Alertas */
+        .alert {
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 5px solid;
+            font-weight: 500;
+        }
+
+        .alert-info {
+            background: linear-gradient(135deg, #e6f7ff 0%, #d1ecf1 100%);
+            border-color: #006940;
+            color: #004d30;
+        }
+
+        .alert-warning {
+            background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%);
+            border-color: #FF9600;
+            color: #e67e00;
+        }
+
+        .alert-success {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+            border-color: #006940;
+            color: #004d30;
+        }
+
+        .alert-danger {
+            background: linear-gradient(135deg, #ffebee 0%, #f8d7da 100%);
+            border-color: #E3130C;
+            color: #b50f09;
+        }
+
+        /* Números de Destaque */
+        .numero-destaque {
+            background: linear-gradient(135deg, #FF9600 0%, #FF8000 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 25px 0;
+            font-size: 1.4rem;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(255, 150, 0, 0.3);
+        }
+
+        /* Tabelas */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .table th, .table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #DADADA;
+        }
+
+        .table th {
+            background: linear-gradient(135deg, #1D1D1B 0%, #333 100%);
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .table tbody tr:hover {
+            background: linear-gradient(135deg, #fff8e1 0%, #f9f9f9 100%);
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background-color: #DADADA;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progress-bar {
+            background: linear-gradient(135deg, #FF9600 0%, #E3130C 50%, #006940 100%);
+            height: 35px;
+            width: 0%;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Email Status */
+        .email-status {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #DADADA;
+            margin: 20px 0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header-main .container {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                width: 100%;
+                text-align: center;
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-text h1 {
+                font-size: 22px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .content-section {
+                padding: 25px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1D1D1B 0%, #333 100%);
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer h4 {
+            margin-bottom: 15px;
+            color: #FF9600;
+            font-weight: 700;
+        }
+
+        .footer a {
+            color: #DADADA;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #FF9600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Top -->
+    <div class="header-top">
+        <div class="container">
+            <div>Portal da Transparência | Ouvidoria | Acesso à Informação</div>
+            <div>🌐 | A+ A- | 👁️</div>
+        </div>
+    </div>
+
+    <!-- Header Principal -->
+    <div class="header-main">
+        <div class="container">
+            <div class="logo-prefeitura">
+                <div class="brasao-sp">🏛️</div>
+                <div class="logo-text">
+                    <h1>PREFEITURA DE SÃO PAULO</h1>
+                    <p>Portal do Município de Heliópolis</p>
+                </div>
+            </div>
+            <div style="color: #1D1D1B; font-weight: bold; text-align: right;">
+                Cidade de São Paulo  
+
+                <p style="color: #FF9600; font-size: 14px; margin-top: 5px;">Governo Municipal</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="#">Prefeitura</a></li>
+                <li><a href="#">Projetos Especiais</a></li>
+                <li>Município de Heliópolis</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Navegação Principal -->
+    <nav class="nav-main">
+        <div class="container">
+            <div class="nav-menu">
+                <button class="nav-item active" onclick="showSection('inicio')">Início</button>
+                <button class="nav-item" onclick="showSection('projetos')">Projetos de Lei</button>
+                <button class="nav-item" onclick="showSection('votacoes')">Votações 2026</button>
+                <button class="nav-item" onclick="showSection('documentos')">Documentação</button>
+                <button class="nav-item" onclick="showSection('tramitacao')">Tramitação</button>
+                <button class="nav-item" onclick="showSection('email')">Contato</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Seção Início -->
+            <div id="inicio" class="content-section active">
+                <h2 class="section-title">Projeto de Criação do Município de Heliópolis</h2>
+                
+                <div class="alert alert-info">
+                    <strong>📢 Comunicado Oficial da Prefeitura:</strong> A Prefeitura de São Paulo reconhece e apoia iniciativas inovadoras de desenvolvimento urbano sustentável. Este projeto representa um marco histórico na evolução da gestão pública municipal brasileira.
+                </div>
+                
+                <div class="card">
+                    <h3>🎯 Objetivo Estratégico</h3>
+                    <p>Criar o primeiro município brasileiro com governança 100% digital e sustentável, estabelecendo novo paradigma em administração pública municipal. O projeto integra tecnologias avançadas de participação cidadã, gestão transparente e desenvolvimento urbano inteligente.</p>
+                </div>
+
+                <div class="numero-destaque">
+                    ✍️ 15.847 ASSINATURAS COLETADAS
+                      
+<small style="font-size: 1rem; opacity: 0.9;">Meta: 25.000 assinaturas até dezembro de 2025</small>
+                </div>
+
+                <div class="grid">
+                    <div class="card">
+                        <h3>📊 Dados Demográficos (IBGE)</h3>
+                        <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                            <li><strong>População (Censo 2022):</strong> 12.309 pessoas</li>
+                            <li><strong>População (Estimativa 2024):</strong> 13.074 pessoas</li>
+                            <li><strong>Área Territorial:</strong> 314,67 km²</li>
+                            <li><strong>Densidade Demográfica:</strong> 39,27 hab/km²</li>
+                            <li><strong>Escolarização (6 a 14 anos):</strong> 99,03%</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>💰 Viabilidade Econômica (IBGE)</h3>
+                        <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                            <li><strong>PIB (2021):</strong> R$ 140,6 milhões</li>
+                            <li><strong>PIB per capita (2021):</strong> R$ 10.865,50</li>
+                            <li><strong>IDHM (2010):</strong> 0,563 (Baixo)</li>
+                            <li><strong>Receitas Realizadas (2024):</strong> R$ 84,2 milhões</li>
+                            <li><strong>Despesas Empenhadas (2024):</strong> R$ 76,7 milhões</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>⏰ Cronograma Executivo</h3>
+                        <ul style="list-style: none; padding-left: 0; line-height: 1.8;">
+                            <li><strong>Julho 2025:</strong> Protocolo na Câmara ✅</li>
+                            <li><strong>Agosto 2025:</strong> Aprovação Municipal 🔄</li>
+                            <li><strong>Outubro 2025:</strong> Tramitação Estadual 📅</li>
+                            <li><strong>Janeiro 2026:</strong> Emancipação Oficial 📅</li>
+                            <li><strong>Março 2026:</strong> Posse da Administração 📅</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="alert alert-warning">
+                    <strong>⚠️ Urgência Legislativa:</strong> O projeto tramita em regime de urgência urgentíssima na Câmara Municipal, com prazo de 5 dias úteis para votação em todas as instâncias.
+                </div>
+            </div>
+
+            <!-- Seção Projetos de Lei -->
+            <div id="projetos" class="content-section">
+                <h2 class="section-title">📋 Projetos de Lei em Tramitação</h2>
+                
+                <div class="document-item">
+                    <h3>PL 001/2025 - Criação do Município de Heliópolis <span class="status-badge status-urgente">URGENTÍSSIMO</span></h3>
+                    <p><strong>Autor:</strong> Coletivo Heliópolis Digital & População</p>
+                    <p><strong>Protocolo:</strong> 28/07/2025 às 14h30 - Gabinete da Presidência</p>
+                    <p><strong>Regime:</strong> Urgência Urgentíssima (Art. 155 do Regimento Interno CMSP)</p>
+                    <p><strong>Ementa:</strong> Dispõe sobre a criação do município de Heliópolis, estabelece limites territoriais, estrutura administrativa digital e sistema de governança eletrônica integrado aos padrões municipais de São Paulo, com base nos dados do IBGE.</p>
+                    
+                    <div class="alert alert-danger">
+                        <strong>⏰ PRAZO CRÍTICO:</strong> 5 dias úteis para votação em regime de urgência urgentíssima. Próxima sessão: 30/07/2025 às 14h00.
+                    </div>
+                    
+                    <a href="#" class="btn">📄 Texto Integral (47 artigos)</a>
+                    <a href="#" class="btn btn-secondary">📊 Tramitação Online</a>
+                    <a href="#" class="btn btn-success">✅ Manifestar Apoio</a>
+                </div>
+
+                <div class="document-item">
+                    <h3>PL 002/2025 - Fomento à Economia Criativa e Digital <span class="status-badge status-tramitacao">EM ANÁLISE</span></h3>
+                    <p><strong>Autor:</strong> Comissão de Desenvolvimento Econômico</p>
+                    <p><strong>Protocolo:</strong> 28/07/2025 às 15h00 - Comissão de Tecnologia</p>
+                    <p><strong>Ementa:</strong> Institui o Programa de Incentivo à Economia Criativa e Digital em Heliópolis, oferecendo isenções fiscais e microcrédito para startups e MEIs de base tecnológica, visando elevar o PIB per capita local.</p>
+                    <a href="#" class="btn">📄 Detalhes do Programa</a>
+                    <a href="#" class="btn btn-secondary">💬 Consulta Pública</a>
+                </div>
+
+                <div class="document-item">
+                    <h3>PL 003/2025 - Educação para o Futuro <span class="status-badge status-aprovado">APROVADO</span></h3>
+                    <p><strong>Autor:</strong> Comissão de Educação e Cultura</p>
+                    <p><strong>Protocolo:</strong> 25/07/2025 - Comissão de Administração</p>
+                    <p><strong>Ementa:</strong> Define a implementação de um currículo escolar municipal focado em programação, robótica e cidadania digital, para manter e ampliar a taxa de escolarização de 99,03% com qualificação para o século XXI.</p>
+                    <a href="#" class="btn">🏢 Diretrizes Curriculares</a>
+                    <a href="#" class="btn btn-secondary">📋 Matriz de Competências</a>
+                </div>
+            </div>
+
+            <!-- Seção Votações 2026 -->
+            <div id="votacoes" class="content-section">
+                <h2 class="section-title">🗳️ Sistema de Votações Eletrônicas 2026</h2>
+                
+                <div class="destaque-sp">
+                    <h3>🚀 Pioneirismo em Participação Democrática Digital</h3>
+                    <div class="countdown" id="countdown">
+                        Faltam 497 dias para as eleições presidenciais de 2026
+                    </div>
+                    <p>Heliópolis será o primeiro município brasileiro a implementar sistema de votação eletrônica 100% integrado à plataforma oficial do TSE, estabelecendo novo padrão mundial para participação cidadã digital e transparência eleitoral.</p>
+                </div>
+
+                <div class="grid">
+                    <div class="card">
+                        <h3>🔗 Integração Total TSE</h3>
+                        <p>Sistema completamente integrado à infraestrutura do Tribunal Superior Eleitoral, garantindo conformidade legal absoluta, auditabilidade total e segurança máxima em todas as votações oficiais.</p>
+                        <a href="#" class="btn">🔍 Especificações Técnicas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showSection(sectionId) {
+            // Esconde todas as seções
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Mostra a seção clicada
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+
+            // Atualiza o botão ativo no menu
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`.nav-item[onclick="showSection('${sectionId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
