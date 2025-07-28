@@ -1,1 +1,655 @@
+/*
+Arquivo: styles.css
+Versão: 2.0
+Responsabilidade: Estilos do Portal Municipal de Heliópolis
+Data de Produção: 28/07/2025
+Produção owner: Zeh Sobrinho
+Sênior Full Stack DevOp: Manus
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #1D1D1B;
+    background-color: #f5f5f5;
+}
+
+/* Header da Prefeitura SP */
+.header-top {
+    background: linear-gradient(135deg, #1D1D1B 0%, #333 100%);
+    color: white;
+    padding: 8px 0;
+    font-size: 12px;
+}
+
+.header-top .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-main {
+    background-color: #ffffff;
+    border-bottom: 4px solid #FF9600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.header-main .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-prefeitura {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.brasao-sp {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #FF9600 0%, #E3130C 50%, #006940 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 32px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.logo-text h1 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #1D1D1B;
+    margin-bottom: 5px;
+    font-family: 'Franklin Gothic Demi', sans-serif;
+}
+
+.logo-text p {
+    font-size: 16px;
+    color: #FF9600;
+    font-weight: 600;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    background: linear-gradient(135deg, #DADADA 0%, #f0f0f0 100%);
+    padding: 12px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.breadcrumb ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.breadcrumb li::after {
+    content: " > ";
+    margin-left: 10px;
+    color: #666;
+}
+
+.breadcrumb li:last-child::after {
+    content: "";
+}
+
+.breadcrumb a {
+    color: #006940;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.breadcrumb a:hover {
+    color: #E3130C;
+}
+
+/* Navegação Principal */
+.nav-main {
+    background: linear-gradient(135deg, #FF9600 0%, #FF8000 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 150, 0, 0.3);
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+.nav-item {
+    background: transparent;
+    color: white;
+    padding: 18px 24px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    font-size: 13px;
+}
+
+.nav-item:hover {
+    background-color: rgba(0, 105, 64, 0.8);
+    transform: translateY(-2px);
+}
+
+.nav-item.active {
+    background-color: #006940;
+    position: relative;
+    box-shadow: inset 0 3px 0 #E3130C;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    background-color: white;
+    margin: 20px 0;
+}
+
+.content-section {
+    display: none;
+    padding: 40px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-top: 3px solid #FF9600;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.section-title {
+    font-size: 32px;
+    color: #1D1D1B;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #FF9600;
+    font-weight: 600;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(135deg, #E3130C 0%, #006940 100%);
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border-left: 5px solid #FF9600;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    transform: translateY(-3px);
+    border-left-color: #E3130C;
+}
+
+.card h3 {
+    color: #1D1D1B;
+    margin-bottom: 18px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Sprint Cards */
+.sprint-card {
+    background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border: 2px solid #DADADA;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.sprint-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+    border-color: #FF9600;
+}
+
+.sprint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sprint-number {
+    background: linear-gradient(135deg, #FF9600 0%, #E3130C 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.sprint-duration {
+    background: linear-gradient(135deg, #006940 0%, #004d30 100%);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.sprint-title {
+    font-size: 22px;
+    color: #1D1D1B;
+    margin: 15px 0;
+    font-weight: 700;
+}
+
+.sprint-progress {
+    background-color: #DADADA;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0;
+    height: 8px;
+}
+
+.sprint-progress-bar {
+    height: 100%;
+    background: linear-gradient(135deg, #FF9600 0%, #E3130C 50%, #006940 100%);
+    transition: width 0.5s ease;
+}
+
+.sprint-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.metric {
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(135deg, #fff8e1 0%, #f9f9f9 100%);
+    border-radius: 8px;
+    border: 1px solid #DADADA;
+}
+
+.metric-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FF9600;
+    display: block;
+}
+
+.metric-label {
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Botões */
+.btn {
+    background: linear-gradient(135deg, #FF9600 0%, #FF8000 100%);
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    margin: 8px 8px 8px 0;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(255, 150, 0, 0.3);
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #006940 0%, #004d30 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 105, 64, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #DADADA 0%, #bbb 100%);
+    color: #1D1D1B;
+    box-shadow: 0 4px 12px rgba(218, 218, 218, 0.4);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #1D1D1B 0%, #333 100%);
+    color: white;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #E3130C 0%, #c10a05 100%);
+    box-shadow: 0 4px 12px rgba(227, 19, 12, 0.3);
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #b50f09 0%, #900a06 100%);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #006940 0%, #004d30 100%);
+    box-shadow: 0 4px 12px rgba(0, 105, 64, 0.3);
+}
+
+/* Grid Layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+/* Document Items */
+.document-item {
+    background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
+    padding: 25px;
+    border-radius: 8px;
+    border: 2px solid #DADADA;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.document-item:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    border-color: #FF9600;
+    transform: translateY(-3px);
+}
+
+.document-item h3 {
+    color: #1D1D1B;
+    margin-bottom: 18px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-left: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-urgente {
+    background: linear-gradient(135deg, #E3130C 0%, #c10a05 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(227, 19, 12, 0.3);
+}
+
+.status-tramitacao {
+    background: linear-gradient(135deg, #FF9600 0%, #FF8000 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 150, 0, 0.3);
+}
+
+.status-aprovado {
+    background: linear-gradient(135deg, #006940 0%, #004d30 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 105, 64, 0.3);
+}
+
+.status-concluido {
+    background: linear-gradient(135deg, #006940 0%, #004d30 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 105, 64, 0.3);
+}
+
+.status-andamento {
+    background: linear-gradient(135deg, #FF9600 0%, #FF8000 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(255, 150, 0, 0.3);
+}
+
+.status-planejado {
+    background: linear-gradient(135deg, #DADADA 0%, #bbb 100%);
+    color: #1D1D1B;
+    box-shadow: 0 2px 8px rgba(218, 218, 218, 0.3);
+}
+
+/* Destaque da Prefeitura SP */
+.destaque-sp {
+    background: linear-gradient(135deg, #FF9600 0%, #E3130C 50%, #006940 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 12px;
+    margin: 25px 0;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.countdown {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 25px 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Números de Destaque */
+.numero-destaque {
+    background: linear-gradient(135deg, #FF9600 0%, #FF8000 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 25px 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    box-shadow: 0 8px 25px rgba(255, 150, 0, 0.3);
+}
+
+/* Alertas */
+.alert {
+    padding: 20px;
+    border-radius: 8px;
+    margin: 25px 0;
+    border-left: 5px solid;
+    font-weight: 500;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, #e6f7ff 0%, #d1ecf1 100%);
+    border-color: #006940;
+    color: #004d30;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #fff8e1 0%, #fff3cd 100%);
+    border-color: #FF9600;
+    color: #e67e00;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 100%);
+    border-color: #006940;
+    color: #004d30;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #ffebee 0%, #f8d7da 100%);
+    border-color: #E3130C;
+    color: #b50f09;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(135deg, #FF9600 0%, #E3130C 50%, #006940 100%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 80px;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: 18px;
+    top: 5px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FF9600 0%, #E3130C 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(255, 150, 0, 0.3);
+}
+
+.timeline-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-left: 4px solid #FF9600;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #1D1D1B 0%, #333 100%);
+    color: white;
+    padding: 40px 0;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.footer h4 {
+    margin-bottom: 15px;
+    color: #FF9600;
+    font-weight: 700;
+}
+
+.footer a {
+    color: #DADADA;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #FF9600;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .header-main .container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        padding: 15px 20px;
+        font-size: 12px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .logo-text h1 {
+        font-size: 22px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+
+    .content-section {
+        padding: 25px;
+    }
+
+    .sprint-metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-marker {
+        left: 8px;
+    }
+
+    .timeline-item {
+        padding-left: 60px;
+    }
+
+    .countdown {
+        font-size: 1.8rem;
+    }
+
+    .numero-destaque {
+        font-size: 1.2rem;
+        padding: 25px;
+    }
+}
 
